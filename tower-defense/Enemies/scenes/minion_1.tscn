@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bpqgparud388i"]
+
+[ext_resource type="Script" uid="uid://ck4rqj1101vy8" path="res://Enemies/scripts/minion_1.gd" id="1_3lvhy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fbsom"]
+radius = 11.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_fbsom"]
+
+[node name="Minion1" type="Area2D" unique_id=2030312787 groups=["Enemy"]]
+script = ExtResource("1_3lvhy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1033980924]
+shape = SubResource("CircleShape2D_fbsom")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=280646707]
+self_modulate = Color(0.7709561, 0.14464676, 3.85046e-07, 1)
+scale = Vector2(20.000002, 20)
+texture = SubResource("CanvasTexture_fbsom")

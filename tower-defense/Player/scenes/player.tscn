@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bekc1ygsst17"]
+
+[ext_resource type="Script" uid="uid://cda1sxg74hsc0" path="res://Player/scripts/player.gd" id="1_rljm8"]
+[ext_resource type="Script" uid="uid://duxata6igqdx1" path="res://Player/scripts/gun.gd" id="2_wmpps"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_862pr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clypn"]
+size = Vector2(22.5, 42)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_s8xio"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1619322511 groups=["Player"]]
+script = ExtResource("1_rljm8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2058955419]
+self_modulate = Color(0.21399003, 0.5606272, 0.45749122, 1)
+position = Vector2(10.75, 21)
+scale = Vector2(22.5, 42)
+texture = SubResource("CanvasTexture_862pr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1776671889]
+position = Vector2(10.75, 21)
+shape = SubResource("RectangleShape2D_clypn")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1796677905]
+zoom = Vector2(0.8, 0.8)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.84
+
+[node name="gun" type="Sprite2D" parent="." unique_id=168065870]
+self_modulate = Color(0.19434929, 0.19434926, 0.19434926, 1)
+position = Vector2(11.16, 20.885)
+rotation = -0.008726646
+scale = Vector2(25.854998, 9.775)
+texture = SubResource("CanvasTexture_s8xio")
+offset = Vector2(0.505, 0)
+script = ExtResource("2_wmpps")
+
+[node name="CooldownTimer" type="Timer" parent="gun" unique_id=260920899]
+wait_time = 0.5
+
+[connection signal="timeout" from="gun/CooldownTimer" to="gun" method="_on_cooldown_timer_timeout"]

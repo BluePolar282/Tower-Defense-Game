@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dujjomrb0leic"]
+
+[ext_resource type="Script" uid="uid://dtrrd0s1d2jl" path="res://Utility/scripts/placement_logic.gd" id="1_jl80v"]
+[ext_resource type="Script" uid="uid://danpun8llyjn1" path="res://Towers/scripts/gun_tower.gd" id="1_oamq0"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_862pr"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_s8xio"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_fbsom"]
+
+[node name="GunTower" type="Node2D" unique_id=955976778 groups=["Tower"]]
+script = ExtResource("1_oamq0")
+
+[node name="PlacementLogic" type="Node2D" parent="." unique_id=1605081534]
+script = ExtResource("1_jl80v")
+
+[node name="PlacementSprite" type="Sprite2D" parent="PlacementLogic" unique_id=889618167]
+self_modulate = Color(0, 0, 0, 0.46666667)
+scale = Vector2(64, 64)
+texture = SubResource("CanvasTexture_862pr")
+
+[node name="TowerSprite" type="Sprite2D" parent="." unique_id=701161655]
+visible = false
+self_modulate = Color(0.14396158, 0.42458907, 0.72200567, 1)
+scale = Vector2(64, 64)
+texture = SubResource("CanvasTexture_s8xio")
+
+[node name="turret" type="Sprite2D" parent="TowerSprite" unique_id=261977008]
+self_modulate = Color(0.068763256, 0.24989617, 0.4672678, 1)
+scale = Vector2(0.9749999, 0.22499998)
+texture = SubResource("CanvasTexture_fbsom")
+offset = Vector2(0.35897437, 0)
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=614102312]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

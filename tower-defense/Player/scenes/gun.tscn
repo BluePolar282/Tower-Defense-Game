@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ci51xd4ee7hnq"]
+
+[ext_resource type="Script" uid="uid://duxata6igqdx1" path="res://Player/scripts/gun.gd" id="1_erqsn"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_s8xio"]
+
+[node name="Gun" type="Node2D" unique_id=846868584]
+script = ExtResource("1_erqsn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1711899291]
+self_modulate = Color(0.20152658, 0.20152658, 0.20152658, 1)
+position = Vector2(26, 23.5)
+scale = Vector2(36.000004, -8.999999)
+texture = SubResource("CanvasTexture_s8xio")
