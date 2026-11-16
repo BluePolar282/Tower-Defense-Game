@@ -3,24 +3,20 @@ extends Node2D
 var bullet = preload("res://Player/scenes/bullet.tscn")
 @onready var enemy :Node2D= null
 @onready var turret: Sprite2D = $TowerSprite/turret
+@onready var parent: Node2D = $".."
 
 var placed := false
-var tower_number : int
 
 func _ready() -> void:
-	print(tower_number)
+	$CollisionShape2D.disabled = true
 
 func _process(delta: float) -> void:
-	if tower_number == 1:
-		$PlacementLogic.my_turn = true
 	if placed:
 		track_enemy()
 
 func _on_cooldown_timer_timeout() -> void:
 	if placed:
 		shoot()
-	else:
-		return
 
 func track_enemy():
 	var enemies = get_tree().get_nodes_in_group("Enemy") #returns an array
@@ -47,3 +43,7 @@ func shoot():
 	get_tree().root.add_child(spawned_bullet)
 	spawned_bullet.global_position = global_position
 	spawned_bullet.rotation = turret.rotation
+
+func _on_placement_logic_tower_placed() -> void:
+	$CollisionShape2D.disabled = false
+	parent.resetTower = true

@@ -15,16 +15,11 @@ func _input(event: InputEvent) -> void:
 			hurt()
 
 func hurt():
-	print("ouch")
 	Health -= 10
 	$Sprite2D/AnimationPlayer.play("hurt")
 
 func die():
-	print("game over")
-
-
-	HOVERING = false
-	print("out")
+	pass
 
 
 func _on_area_entered(area: Area2D) -> void:

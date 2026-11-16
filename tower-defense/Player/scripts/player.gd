@@ -12,7 +12,7 @@ func _physics_process(delta):
 	get_input()
 	move_and_slide()
 	
-#MOVEMENT/ANIMATIONS
+#movement
 func get_input():
 	var DIRECTION = Input.get_vector("Left", "Right", "Up", "Down")
 	velocity = DIRECTION * SPEED

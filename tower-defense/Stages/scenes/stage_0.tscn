@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c8jjxg8x4frss" path="res://Towers/scenes/core_tower.tscn" id="2_v7ar1"]
 [ext_resource type="PackedScene" uid="uid://dm240nvy1lx21" path="res://Utility/scenes/minion_spawner.tscn" id="3_on0om"]
 [ext_resource type="PackedScene" uid="uid://dujjomrb0leic" path="res://Towers/scenes/gun_tower.tscn" id="4_aa730"]
+[ext_resource type="Script" uid="uid://dvvkbp0g0mr2f" path="res://Towers/scripts/towers_container.gd" id="4_xuk1u"]
 
 [node name="Stage 0" type="Node2D" unique_id=175760451]
 
@@ -20,6 +21,7 @@ position = Vector2(0, -700)
 position = Vector2(-800, 0)
 rotation = 1.5707964
 
-[node name="Towers" type="Node2D" parent="." unique_id=355668163]
+[node name="TowersContainer" type="Node2D" parent="." unique_id=355668163]
+script = ExtResource("4_xuk1u")
 
-[node name="GunTower" parent="Towers" unique_id=955976778 instance=ExtResource("4_aa730")]
+[node name="GunTower" parent="TowersContainer" unique_id=955976778 instance=ExtResource("4_aa730")]

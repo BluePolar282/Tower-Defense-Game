@@ -15,12 +15,10 @@ script = ExtResource("1_rljm8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2058955419]
 self_modulate = Color(0.21399003, 0.5606272, 0.45749122, 1)
-position = Vector2(10.75, 21)
 scale = Vector2(22.5, 42)
 texture = SubResource("CanvasTexture_862pr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1776671889]
-position = Vector2(10.75, 21)
 shape = SubResource("RectangleShape2D_clypn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1796677905]
@@ -30,7 +28,6 @@ position_smoothing_speed = 10.84
 
 [node name="gun" type="Sprite2D" parent="." unique_id=168065870]
 self_modulate = Color(0.19434929, 0.19434926, 0.19434926, 1)
-position = Vector2(11.16, 20.885)
 rotation = -0.008726646
 scale = Vector2(25.854998, 9.775)
 texture = SubResource("CanvasTexture_s8xio")

@@ -23,8 +23,6 @@ func shoot():
 	spawned_bullet.rotation = rotation
 	
 	cooldown_timer.start()
-	print("shoot")
 	
 func _on_cooldown_timer_timeout() -> void:
 	cooldown = false
-	print("done")

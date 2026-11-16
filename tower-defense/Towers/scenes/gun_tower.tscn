@@ -1,24 +1,39 @@
 [gd_scene format=3 uid="uid://dujjomrb0leic"]
 
-[ext_resource type="Script" uid="uid://dtrrd0s1d2jl" path="res://Utility/scripts/placement_logic.gd" id="1_jl80v"]
+[ext_resource type="Script" uid="uid://dtrrd0s1d2jl" path="res://Towers/scripts/placement_logic.gd" id="1_jl80v"]
 [ext_resource type="Script" uid="uid://danpun8llyjn1" path="res://Towers/scripts/gun_tower.gd" id="1_oamq0"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbsom"]
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_862pr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8xio"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_s8xio"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_fbsom"]
 
-[node name="GunTower" type="Node2D" unique_id=955976778 groups=["Tower"]]
+[node name="GunTower" type="Area2D" unique_id=2131984189 groups=["Tower"]]
 script = ExtResource("1_oamq0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=761598985]
+modulate = Color(0.32915828, 0.32915843, 0.3291584, 0.654902)
+scale = Vector2(2.92, 2.92)
+shape = SubResource("RectangleShape2D_fbsom")
 
 [node name="PlacementLogic" type="Node2D" parent="." unique_id=1605081534]
 script = ExtResource("1_jl80v")
 
 [node name="PlacementSprite" type="Sprite2D" parent="PlacementLogic" unique_id=889618167]
-self_modulate = Color(0, 0, 0, 0.46666667)
+modulate = Color(1, 1, 1, 0.651)
 scale = Vector2(64, 64)
 texture = SubResource("CanvasTexture_862pr")
+
+[node name="PlacementArea" type="Area2D" parent="PlacementLogic" unique_id=735545507]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacementLogic/PlacementArea" unique_id=925327985]
+scale = Vector2(3.2, 3.2)
+shape = SubResource("RectangleShape2D_s8xio")
 
 [node name="TowerSprite" type="Sprite2D" parent="." unique_id=701161655]
 visible = false
@@ -36,4 +51,7 @@ offset = Vector2(0.35897437, 0)
 wait_time = 0.5
 autostart = true
 
+[connection signal="tower_placed" from="PlacementLogic" to="." method="_on_placement_logic_tower_placed"]
+[connection signal="area_entered" from="PlacementLogic/PlacementArea" to="PlacementLogic" method="_on_placement_area_area_entered"]
+[connection signal="area_exited" from="PlacementLogic/PlacementArea" to="PlacementLogic" method="_on_placement_area_area_exited"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
