@@ -32,7 +32,7 @@ func track_enemy():
 			enemy = guy #officialize him as the node
 		
 	if enemy != null: 
-		var prediction_time = 0.5
+		var prediction_time = 0.7
 		var predicted_position = enemy.global_position + enemy.velocity * prediction_time
 
 		turret.look_at(predicted_position)
