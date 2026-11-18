@@ -13,6 +13,7 @@ var wave_spawning := false
 var can_clear := false
 
 func _process(delta: float) -> void:
+	print(Globals.enemy_count)
 	on_wave_cleared()
 	spawn_wave()
 
@@ -38,9 +39,10 @@ func spawn_wave(): #Spawns enemies for a certain amount of time
 		wave_spawning = false
 
 func on_wave_cleared():
-	if Globals.enemy_count == 0 and can_clear:
+	if Globals.enemy_count <= 0 and can_clear:
 		print("wave Cleared")
 		wave_break_timer.start()
+		Globals.enemy_count = 0
 		can_clear = false
 	
 func _on_wave_break_timer_timeout() -> void:

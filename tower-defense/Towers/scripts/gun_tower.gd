@@ -6,6 +6,7 @@ var bullet = preload("res://Player/scenes/bullet.tscn")
 @onready var parent: Node2D = $".."
 
 var placed := false
+var enemy_found := false
 
 func _ready() -> void:
 	$CollisionShape2D.disabled = true
@@ -15,7 +16,7 @@ func _process(delta: float) -> void:
 		track_enemy()
 
 func _on_cooldown_timer_timeout() -> void:
-	if placed:
+	if placed and enemy_found:
 		shoot()
 
 func track_enemy():
@@ -32,10 +33,13 @@ func track_enemy():
 			enemy = guy #officialize him as the node
 		
 	if enemy != null: 
+		enemy_found = true
 		var prediction_time = 0.7
 		var predicted_position = enemy.global_position + enemy.velocity * prediction_time
 
 		turret.look_at(predicted_position)
+	else:
+		enemy_found = false
 
 func shoot():
 	var spawned_bullet = bullet.instantiate()
