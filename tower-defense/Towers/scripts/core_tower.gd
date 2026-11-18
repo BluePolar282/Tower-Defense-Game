@@ -12,11 +12,21 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if HOVERING == true:
 		if Input.is_action_pressed("Click"):
-			hurt()
+			hurt(5)
 
-func hurt():
+
+
+func hurt(size):
 	Health -= 10
-	$Sprite2D/AnimationPlayer.play("hurt")
+	$Sprite2D/AnimationPlayer.stop()
+	$Sprite2D/AnimationPlayer.play("hurtflash")
+	var origin = position
+	var tween = create_tween()
+	tween.tween_property(self, "position", origin + Vector2(0, size), 0.05)
+	tween.tween_property(self, "position", origin - Vector2(0, size), 0.05)
+	tween.tween_property(self, "position", origin + Vector2(0, size), 0.05)
+	tween.tween_property(self, "position", origin - Vector2(0, size), 0.05)
+	tween.tween_property(self, "position", origin, 0.05)
 
 func die():
 	pass
@@ -24,5 +34,5 @@ func die():
 
 func _on_area_entered(area: Area2D) -> void:
 		if area.is_in_group("Enemy"):
-			hurt()
-			area.die()
+			hurt(5)
+			area.queue_free()
