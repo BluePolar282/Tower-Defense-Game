@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dm240nvy1lx21"]
+
+[ext_resource type="Script" uid="uid://dv3jgp4a7ea2b" path="res://Enemies/scripts/minion_spawner.gd" id="1_c575m"]
+
+[node name="Minion Spawner" type="Marker2D" unique_id=488351652]
+script = ExtResource("1_c575m")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=37473008]
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=9399316]
+wait_time = 0.8
+autostart = true
+
+[node name="WaveTimer" type="Timer" parent="." unique_id=782963950]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
