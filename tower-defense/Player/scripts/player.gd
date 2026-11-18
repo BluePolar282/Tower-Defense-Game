@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-#Testing Github
 
 var Bullet = preload("res://Player/scenes/bullet.tscn")
 
