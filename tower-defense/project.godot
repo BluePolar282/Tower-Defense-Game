@@ -14,6 +14,10 @@ config/name="Tower Defense"
 run/main_scene="uid://dcru7mkl6i7ex"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
+[autoload]
+
+Globals="*uid://b4p03jfcqg50b"
+
 [display]
 
 window/stretch/mode="canvas_items"
