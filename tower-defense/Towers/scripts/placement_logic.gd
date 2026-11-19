@@ -5,6 +5,8 @@ const TILE_SIZE := Vector2(64, 64)
 @onready var tower_sprite: Sprite2D = $"../TowerSprite"
 @onready var placement_sprite: Sprite2D = $PlacementSprite
 @onready var tower = $".."
+@onready var range_sprite: Polygon2D = $"../DetectionArea/RangeSprite"
+
 
 var is_placed := false
 var obstructed := false
@@ -32,7 +34,6 @@ func _on_placement_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Tower"):
 		obstructed = true
 		$PlacementSprite.modulate = Color.DARK_RED
-
 
 func _on_placement_area_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Tower"):

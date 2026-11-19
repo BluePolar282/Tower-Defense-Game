@@ -7,6 +7,7 @@ var bullet = preload("res://Player/scenes/bullet.tscn")
 
 var placed := false
 var enemy_found := false
+var in_range : int
 
 func _ready() -> void:
 	$CollisionShape2D.disabled = true
@@ -28,13 +29,13 @@ func track_enemy():
 	for guy in enemies: #accesses enemies array
 		var distance = global_position.distance_to(guy.global_position) #access distance to each enemy
 		
-		if distance < closest_distance: #if the guy is closer than the last guy
+		if distance < closest_distance and in_range > 0: #if the guy is closer than the last guy and within range
 			closest_distance = distance #make him the new guy used for reference
 			enemy = guy #officialize him as the node
 		
 	if enemy != null: 
 		enemy_found = true
-		var prediction_time = 0.7
+		var prediction_time = 0.3
 		var predicted_position = enemy.global_position + enemy.velocity * prediction_time
 
 		turret.look_at(predicted_position)
@@ -51,3 +52,12 @@ func shoot():
 func _on_placement_logic_tower_placed() -> void:
 	$CollisionShape2D.disabled = false
 	parent.resetTower = true
+
+
+func _on_detection_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Enemy"):
+		in_range += 1
+
+func _on_detection_area_area_exited(area: Area2D) -> void:
+	if area.is_in_group("Enemy"):
+		in_range -= 1
