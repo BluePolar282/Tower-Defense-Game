@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://clwiatf6ew2sg"]
+
+[ext_resource type="Script" uid="uid://dvvkbp0g0mr2f" path="res://Utility/scripts/towers_container.gd" id="1_w13xj"]
+[ext_resource type="PackedScene" uid="uid://lvbxmq7tltry" path="res://Towers/scenes/aoe_tower.tscn" id="2_w13xj"]
+
+[node name="TowersContainer" type="Node" unique_id=177328822]
+script = ExtResource("1_w13xj")
+
+[node name="AoeTower" parent="." unique_id=2022801606 instance=ExtResource("2_w13xj")]

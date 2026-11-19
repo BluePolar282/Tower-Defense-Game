@@ -13,7 +13,6 @@ var wave_spawning := false
 var can_clear := false
 
 func _process(delta: float) -> void:
-	print(Globals.enemy_count)
 	on_wave_cleared()
 	spawn_wave()
 

@@ -20,6 +20,7 @@ func _on_cooldown_timer_timeout() -> void:
 	if placed and enemy_found:
 		shoot()
 
+
 func track_enemy():
 	var enemies = get_tree().get_nodes_in_group("Enemy") #returns an array
 	
@@ -54,6 +55,7 @@ func _on_placement_logic_tower_placed() -> void:
 	parent.resetTower = true
 
 
+#detects enemies within range
 func _on_detection_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemy"):
 		in_range += 1

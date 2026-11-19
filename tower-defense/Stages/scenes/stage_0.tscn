@@ -2,11 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bekc1ygsst17" path="res://Player/scenes/player.tscn" id="2_on0om"]
 [ext_resource type="PackedScene" uid="uid://c8jjxg8x4frss" path="res://Towers/scenes/core_tower.tscn" id="2_v7ar1"]
-[ext_resource type="PackedScene" uid="uid://dyhiiprblmqid" path="res://Enemies/scenes/minion_spawner.tscn" id="3_on0om"]
-[ext_resource type="PackedScene" uid="uid://dujjomrb0leic" path="res://Towers/scenes/gun_tower.tscn" id="4_aa730"]
-[ext_resource type="Script" uid="uid://dvvkbp0g0mr2f" path="res://Utility/scripts/towers_container.gd" id="4_xuk1u"]
+[ext_resource type="PackedScene" uid="uid://dm240nvy1lx21" path="res://Enemies/scenes/minion_spawner.tscn" id="3_on0om"]
+[ext_resource type="PackedScene" uid="uid://clwiatf6ew2sg" path="res://Utility/scenes/towers_container.tscn" id="4_aa730"]
 
-[node name="Stage 0" type="Node2D" unique_id=175760451]
+[node name="Stage 0" type="Node" unique_id=557239229]
 
 [node name="Player" parent="." unique_id=1619322511 instance=ExtResource("2_on0om")]
 
@@ -26,7 +25,4 @@ position = Vector2(-800, 0)
 [node name="Minion Spawner4" parent="Spawners" unique_id=1100555498 instance=ExtResource("3_on0om")]
 position = Vector2(0, -800)
 
-[node name="TowersContainer" type="Node2D" parent="." unique_id=355668163]
-script = ExtResource("4_xuk1u")
-
-[node name="GunTower" parent="TowersContainer" unique_id=955976778 instance=ExtResource("4_aa730")]
+[node name="TowersContainer" parent="." unique_id=869733067 instance=ExtResource("4_aa730")]
