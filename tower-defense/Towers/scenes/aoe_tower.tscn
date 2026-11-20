@@ -29,7 +29,6 @@ texture = SubResource("CanvasTexture_o4y1m")
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=1840121425]
 wait_time = 0.5
-one_shot = true
 autostart = true
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=2084317890]
@@ -57,7 +56,6 @@ texture = SubResource("CanvasTexture_dcdxg")
 scale = Vector2(3.2, 3.2)
 shape = SubResource("RectangleShape2D_r2est")
 
-[connection signal="in_range" from="." to="." method="_on_in_range"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_area_exited"]

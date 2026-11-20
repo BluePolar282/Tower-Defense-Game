@@ -16,13 +16,13 @@
 [node name="Minion Spawner" parent="Spawners" unique_id=488351652 instance=ExtResource("3_on0om")]
 position = Vector2(800, 0)
 
-[node name="Minion Spawner2" parent="Spawners" unique_id=925913409 instance=ExtResource("3_on0om")]
+[node name="Minion Spawner2" parent="Spawners" unique_id=931686412 instance=ExtResource("3_on0om")]
 position = Vector2(0, 700)
 
-[node name="Minion Spawner3" parent="Spawners" unique_id=1750327040 instance=ExtResource("3_on0om")]
+[node name="Minion Spawner3" parent="Spawners" unique_id=1342197286 instance=ExtResource("3_on0om")]
 position = Vector2(-800, 0)
 
-[node name="Minion Spawner4" parent="Spawners" unique_id=1100555498 instance=ExtResource("3_on0om")]
+[node name="Minion Spawner4" parent="Spawners" unique_id=110062977 instance=ExtResource("3_on0om")]
 position = Vector2(0, -800)
 
 [node name="TowersContainer" parent="." unique_id=869733067 instance=ExtResource("4_aa730")]
