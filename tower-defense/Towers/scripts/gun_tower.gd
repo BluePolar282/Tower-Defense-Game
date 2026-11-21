@@ -3,13 +3,14 @@ extends Node2D
 var bullet = preload("res://Player/scenes/bullet.tscn")
 @onready var enemy :Node2D= null
 @onready var turret: Sprite2D = $TowerSprite/turret
-@onready var parent: Node2D = $".."
+@onready var parent: Node = $".."
 
 var placed := false
 var enemy_found := false
 var in_range : int
 
 func _ready() -> void:
+	print("im here")
 	$CollisionShape2D.disabled = true
 
 func _process(delta: float) -> void:
@@ -52,7 +53,7 @@ func shoot():
 
 func _on_placement_logic_tower_placed() -> void:
 	$CollisionShape2D.disabled = false
-	parent.resetTower = true
+	parent.resetTower.emit()
 
 
 #detects enemies within range

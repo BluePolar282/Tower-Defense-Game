@@ -6,6 +6,8 @@ extends Area2D
 var placed = false
 var enemies : Array[Area2D]
 
+func _ready() -> void:
+	print("im here")
 
 func _on_detection_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemy"):
@@ -21,4 +23,4 @@ func _on_cooldown_timer_timeout() -> void:
 func _on_placement_logic_tower_placed() -> void:
 	$DetectionArea.monitoring = true
 	$CollisionShape2D.disabled = false
-	parent.resetTower = true
+	parent.resetTower.emit()
