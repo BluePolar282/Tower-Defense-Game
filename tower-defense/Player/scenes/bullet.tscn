@@ -1,18 +1,47 @@
 [gd_scene format=3 uid="uid://dm7i7dejxu7q"]
 
 [ext_resource type="Script" uid="uid://dl2vy7dsn8cif" path="res://Player/scripts/bullet.gd" id="1_tbsai"]
+[ext_resource type="Script" uid="uid://ccste1nkio136" path="res://Player/scripts/bullet_trail.gd" id="2_lp0d8"]
+[ext_resource type="AudioStream" uid="uid://bf4dv3w7x5m1m" path="res://SFX/weapon_sfx/purple_pew1.ogg" id="3_g4gs0"]
+[ext_resource type="AudioStream" uid="uid://y3m36vfoxk4m" path="res://SFX/weapon_sfx/purple_pew2.ogg" id="4_u5tyo"]
+[ext_resource type="AudioStream" uid="uid://b14vy0cdk7ww1" path="res://SFX/weapon_sfx/purple_pew3.ogg" id="5_jjxyr"]
+[ext_resource type="AudioStream" uid="uid://cvnq3xkgnaill" path="res://SFX/weapon_sfx/purple_pew4.ogg" id="6_h0exe"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_fbsom"]
 
+[sub_resource type="Curve" id="Curve_lp0d8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.6966293), 1.4747188, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_lp0d8"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_862pr"]
 radius = 7.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t2dwb"]
+random_pitch = 1.2237
+streams_count = 4
+stream_0/stream = ExtResource("3_g4gs0")
+stream_1/stream = ExtResource("4_u5tyo")
+stream_2/stream = ExtResource("5_jjxyr")
+stream_3/stream = ExtResource("6_h0exe")
 
 [node name="bullet" type="Area2D" unique_id=911155883]
 script = ExtResource("1_tbsai")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=848056992]
-scale = Vector2(9.715, 9.715)
+modulate = Color(1, 1, 0.4509804, 1)
+position = Vector2(0.07125044, -0.07124975)
+scale = Vector2(25.857498, 7.8575006)
 texture = SubResource("CanvasTexture_fbsom")
+
+[node name="trail" type="Line2D" parent="Sprite2D" unique_id=1534641327]
+top_level = true
+width_curve = SubResource("Curve_lp0d8")
+default_color = Color(0.96591264, 0.95092136, 0.91588837, 1)
+gradient = SubResource("Gradient_lp0d8")
+script = ExtResource("2_lp0d8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1463116936]
 shape = SubResource("CircleShape2D_862pr")
@@ -21,6 +50,9 @@ shape = SubResource("CircleShape2D_862pr")
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1060229288]
+stream = SubResource("AudioStreamRandomizer_t2dwb")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
