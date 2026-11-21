@@ -1,10 +1,13 @@
 extends Node2D
 
-var SPEED = 300
+var SPEED = 600
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	position += transform.x * SPEED * delta
+
+func _ready() -> void:
+	$AudioStreamPlayer2D.play()
 
 
 func _on_area_entered(area: Area2D) -> void:
