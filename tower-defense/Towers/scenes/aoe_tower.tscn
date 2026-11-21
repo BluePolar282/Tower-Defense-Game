@@ -28,7 +28,7 @@ scale = Vector2(64, 64)
 texture = SubResource("CanvasTexture_o4y1m")
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=1840121425]
-wait_time = 0.5
+wait_time = 1.5
 autostart = true
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=2084317890]
