@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://lvbxmq7tltry"]
+
+[ext_resource type="Script" uid="uid://dtrrd0s1d2jl" path="res://Towers/scripts/placement_logic.gd" id="1_kjtge"]
+[ext_resource type="Script" uid="uid://8kuv0heb1s41" path="res://Towers/scripts/aoe_tower.gd" id="1_wxto6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxto6"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_o4y1m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_276pe"]
+radius = 233.42
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_dcdxg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2est"]
+
+[node name="AoeTower" type="Area2D" unique_id=2022801606]
+script = ExtResource("1_wxto6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1941590064]
+modulate = Color(0.32915828, 0.32915843, 0.3291584, 0.654902)
+scale = Vector2(2.92, 2.92)
+shape = SubResource("RectangleShape2D_wxto6")
+
+[node name="TowerSprite" type="Sprite2D" parent="." unique_id=251171115]
+self_modulate = Color(0.14396158, 0.42458907, 0.72200567, 1)
+scale = Vector2(64, 64)
+texture = SubResource("CanvasTexture_o4y1m")
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1840121425]
+wait_time = 0.5
+autostart = true
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=2084317890]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=642543514]
+shape = SubResource("CircleShape2D_276pe")
+
+[node name="RangeSprite" type="Polygon2D" parent="DetectionArea" unique_id=1534148630]
+visible = false
+color = Color(0.015686275, 0.015686275, 0.015686275, 0.22352941)
+polygon = PackedVector2Array(161, -166, 201, -118, 226, -63, 236, 2, 229, 60, 203, 116, 165, 162, 118, 204, 58, 226, -8, 238, -66, 224, -114, 204, -167, 170, -204, 116, -226, 63, -234, -1, -226, -60, -202, -115, -168, -163, -124, -203, -62, -224, -5, -234, 59, -226, 117, -201)
+
+[node name="PlacementLogic" type="Node2D" parent="." unique_id=68766599]
+script = ExtResource("1_kjtge")
+
+[node name="PlacementSprite" type="Sprite2D" parent="PlacementLogic" unique_id=837991930]
+modulate = Color(1, 1, 1, 0.651)
+scale = Vector2(64, 64)
+texture = SubResource("CanvasTexture_dcdxg")
+
+[node name="PlacementArea" type="Area2D" parent="PlacementLogic" unique_id=515624183]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacementLogic/PlacementArea" unique_id=1597472175]
+scale = Vector2(3.2, 3.2)
+shape = SubResource("RectangleShape2D_r2est")
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
+[connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_area_exited"]
+[connection signal="tower_placed" from="PlacementLogic" to="." method="_on_placement_logic_tower_placed"]
+[connection signal="area_entered" from="PlacementLogic/PlacementArea" to="PlacementLogic" method="_on_placement_area_area_entered"]
+[connection signal="area_exited" from="PlacementLogic/PlacementArea" to="PlacementLogic" method="_on_placement_area_area_exited"]

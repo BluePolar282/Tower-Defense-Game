@@ -1,11 +1,34 @@
-extends Node2D
+extends Node
 
-var GunTower = load("res://Towers/scenes/gun_tower.tscn")
+var GunTower = preload("res://Towers/scenes/gun_tower.tscn")
+var AoeTower = preload("res://Towers/scenes/aoe_tower.tscn")
 
-var resetTower := false
+signal resetTower
+var selectedTower
+var can_clear := false
 
-func _process(delta: float) -> void:
-	var GunTowerReady = GunTower.instantiate()
-	if resetTower == true:
-		add_child(GunTowerReady)
-		resetTower = false
+func _ready() -> void:
+	resetTower.connect(_reset_tower)
+
+func _reset_tower():
+	can_clear = false
+
+
+
+func _on_aoe_button_pressed() -> void:
+	if selectedTower and can_clear:
+		selectedTower.queue_free()
+		print("aoegone")
+		
+	selectedTower = AoeTower.instantiate()
+	add_child(selectedTower)
+	can_clear = true
+
+func _on_gun_button_pressed() -> void:
+	if selectedTower and can_clear:
+		selectedTower.queue_free()
+		print("gungone")
+		
+	selectedTower = GunTower.instantiate()
+	add_child(selectedTower)
+	can_clear = true

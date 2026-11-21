@@ -4,7 +4,8 @@ extends Area2D
 
 var SPEED = randf_range(95, 125)
 var velocity: Vector2
-var health := 3
+var health :float= 3.0
+var is_in_aoe_range := false
 signal damaged
 
 func _ready() -> void:
