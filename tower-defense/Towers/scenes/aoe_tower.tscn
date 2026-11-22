@@ -14,7 +14,7 @@ radius = 233.42
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2est"]
 
-[node name="AoeTower" type="Area2D" unique_id=2022801606]
+[node name="AoeTower" type="Area2D" unique_id=2022801606 groups=["Tower"]]
 script = ExtResource("1_wxto6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1941590064]
