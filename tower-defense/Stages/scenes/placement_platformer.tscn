@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://blc2xv8lxvkob"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_s8xio"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8xio"]
+size = Vector2(380, 316)
+
+[node name="PlacementPlatform" type="Area2D" unique_id=1518985045 groups=["PlacementPlatform"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1828023648]
+self_modulate = Color(0.24477637, 0.2447764, 0.24477637, 1)
+scale = Vector2(384, 320)
+texture = SubResource("CanvasTexture_s8xio")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=554635252]
+position = Vector2(-1.4305115e-06, -7.56979e-06)
+shape = SubResource("RectangleShape2D_s8xio")

@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://dtrrd0s1d2jl" path="res://Towers/scripts/placement_logic.gd" id="1_jl80v"]
 [ext_resource type="Script" uid="uid://danpun8llyjn1" path="res://Towers/scripts/gun_tower.gd" id="1_oamq0"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbsom"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_s8xio"]
 radius = 233.42
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbsom"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_862pr"]
 
@@ -19,6 +19,11 @@ radius = 233.42
 [node name="GunTower" type="Area2D" unique_id=2131984189 groups=["Tower"]]
 script = ExtResource("1_oamq0")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=761598985]
+modulate = Color(0.32915828, 0.32915843, 0.3291584, 0.654902)
+scale = Vector2(2.92, 2.92)
+shape = SubResource("RectangleShape2D_fbsom")
+
 [node name="DetectionArea" type="Area2D" parent="." unique_id=1868000570]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1788808692]
@@ -28,11 +33,6 @@ shape = SubResource("CircleShape2D_s8xio")
 visible = false
 color = Color(0.015686275, 0.015686275, 0.015686275, 0.22352941)
 polygon = PackedVector2Array(161, -166, 201, -118, 226, -63, 236, 2, 229, 60, 203, 116, 165, 162, 118, 204, 58, 226, -8, 238, -66, 224, -114, 204, -167, 170, -204, 116, -226, 63, -234, -1, -226, -60, -202, -115, -168, -163, -124, -203, -62, -224, -5, -234, 59, -226, 117, -201)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=761598985]
-modulate = Color(0.32915828, 0.32915843, 0.3291584, 0.654902)
-scale = Vector2(2.92, 2.92)
-shape = SubResource("RectangleShape2D_fbsom")
 
 [node name="PlacementLogic" type="Node2D" parent="." unique_id=1605081534]
 script = ExtResource("1_jl80v")

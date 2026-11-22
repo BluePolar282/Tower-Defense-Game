@@ -4,8 +4,23 @@
 [ext_resource type="PackedScene" uid="uid://c8jjxg8x4frss" path="res://Towers/scenes/core_tower.tscn" id="2_v7ar1"]
 [ext_resource type="PackedScene" uid="uid://dm240nvy1lx21" path="res://Enemies/scenes/minion_spawner.tscn" id="3_on0om"]
 [ext_resource type="PackedScene" uid="uid://clwiatf6ew2sg" path="res://Utility/scenes/towers_container.tscn" id="4_aa730"]
+[ext_resource type="PackedScene" uid="uid://blc2xv8lxvkob" path="res://Stages/scenes/placement_platformer.tscn" id="5_xuk1u"]
 
 [node name="Stage 0" type="Node" unique_id=557239229]
+
+[node name="PlatformContainer" type="Node2D" parent="." unique_id=2009439285]
+
+[node name="PlacementPlatform" parent="PlatformContainer" unique_id=1518985045 instance=ExtResource("5_xuk1u")]
+position = Vector2(-290, -256)
+
+[node name="PlacementPlatform2" parent="PlatformContainer" unique_id=1486532346 instance=ExtResource("5_xuk1u")]
+position = Vector2(290, -256)
+
+[node name="PlacementPlatform3" parent="PlatformContainer" unique_id=1800137659 instance=ExtResource("5_xuk1u")]
+position = Vector2(290, 256)
+
+[node name="PlacementPlatform4" parent="PlatformContainer" unique_id=746300367 instance=ExtResource("5_xuk1u")]
+position = Vector2(-290, 256)
 
 [node name="Player" parent="." unique_id=1619322511 instance=ExtResource("2_on0om")]
 
