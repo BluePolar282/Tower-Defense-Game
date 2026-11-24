@@ -22,5 +22,6 @@ func _on_damaged() -> void:
 		die()
 
 func die():
+	Globals.money += 5
 	Globals.enemy_count -= 1
 	queue_free()

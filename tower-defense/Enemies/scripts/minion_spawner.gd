@@ -6,11 +6,14 @@ var minion1_scene = preload("res://Enemies/scenes/minion_1.tscn")
 @onready var wave_spawn_timer: Timer = $WaveSpawnTimer
 @onready var wave_break_timer: Timer = $WaveBreakTimer
 
-
 @onready var spawn_chance := 0
 @export var spawn_radius := 128.0
 var wave_spawning := false
 var can_clear := false
+
+
+func _ready() -> void:
+	wave_break_timer.start()
 
 func _process(delta: float) -> void:
 	on_wave_cleared()
@@ -45,5 +48,4 @@ func on_wave_cleared():
 		can_clear = false
 	
 func _on_wave_break_timer_timeout() -> void:
-	print("ready")
 	wave_spawn_timer.start()

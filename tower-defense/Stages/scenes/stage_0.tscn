@@ -5,6 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://dm240nvy1lx21" path="res://Enemies/scenes/minion_spawner.tscn" id="3_on0om"]
 [ext_resource type="PackedScene" uid="uid://clwiatf6ew2sg" path="res://Utility/scenes/towers_container.tscn" id="4_aa730"]
 [ext_resource type="PackedScene" uid="uid://blc2xv8lxvkob" path="res://Stages/scenes/placement_platformer.tscn" id="5_xuk1u"]
+[ext_resource type="Script" uid="uid://cr3thlfdifjta" path="res://UI/scripts/money_label.gd" id="6_57lx1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_57lx1"]
+font_size = 51
 
 [node name="Stage 0" type="Node" unique_id=557239229]
 
@@ -41,3 +45,14 @@ position = Vector2(-800, 0)
 position = Vector2(0, -800)
 
 [node name="TowersContainer" parent="." unique_id=869733067 instance=ExtResource("4_aa730")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1553210543]
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer" unique_id=219431924]
+offset_left = 22.0
+offset_top = 17.0
+offset_right = 191.0
+offset_bottom = 87.0
+text = "money"
+label_settings = SubResource("LabelSettings_57lx1")
+script = ExtResource("6_57lx1")

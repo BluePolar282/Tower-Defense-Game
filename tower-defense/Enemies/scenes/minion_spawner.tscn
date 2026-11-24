@@ -12,9 +12,9 @@ autostart = true
 [node name="WaveSpawnTimer" type="Timer" parent="." unique_id=782963950]
 wait_time = 3.0
 one_shot = true
-autostart = true
 
 [node name="WaveBreakTimer" type="Timer" parent="." unique_id=1566092103]
+wait_time = 5.0
 one_shot = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
